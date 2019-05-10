@@ -171,6 +171,18 @@ class Posloader(object):
         else:
             pass
 
+        idx_bound = len(self.top_data)
+        try:
+            assert idx_bound == len(self.dsm_data)
+        except AssertionError:
+            print("AssertionError: Length of 'top_data' and 'dsm_data' are not equal.")
+            print("Length of top_data: {}, length of dsm_data: {}".format(idx_bound, len(self.dsm_data)))
+
+        if idx >= idx_bound:
+            raise IndexError("The index of data should less than {}, given {}.".format(idx_bound, idx))
+        else:
+            pass
+
         curr_imgData = self.top_data[idx]
         curr_dsmData = self.dsm_data[idx]
 

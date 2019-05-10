@@ -1,0 +1,16 @@
+dsm_potsdam_06_07.tif
+dsm_potsdam_06_08.tif
+dsm_potsdam_06_09.tif
+dsm_potsdam_06_10.tif
+dsm_potsdam_06_11.tif
+dsm_potsdam_06_12.tif
+dsm_potsdam_06_13.tif
+dsm_potsdam_06_14.tif
+dsm_potsdam_06_15.tif
+dsm_potsdam_07_07.tif
+dsm_potsdam_07_08.tif
+dsm_potsdam_07_09.tif
+dsm_potsdam_07_10.tif
+dsm_potsdam_07_11.tif
+dsm_potsdam_07_12.tif
+dsm_potsdam_07_13.tif

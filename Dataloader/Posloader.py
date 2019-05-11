@@ -7,6 +7,7 @@ import os
 import tifffile
 import numpy as np
 from glob import glob
+from PIL import Image
 
 # for data augmentation
 from albumentations import (

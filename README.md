@@ -40,10 +40,10 @@ class Mydataset(Dataset):
 
 #### GTchecker
 
-Just a script to check dsm ground truth with jet colormap.
+Just a script to check DSM ground truth with jet colormap.
 
 ```bash
-python showGT.py --dataset_dir=<your_data_path> --name_file_path=<path_of_namefile>
+python showGT.py --dataset_dir=<your_data_path> --data_name=<'pos' or 'vai'>
 ```
 
 Note that the complete **namefile** has been included in /GTchecker.

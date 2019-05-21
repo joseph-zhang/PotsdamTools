@@ -197,6 +197,7 @@ class Posloader(object):
         currGt = currGt[rStart:rEnd, cStart:cEnd]
 
         # data augmentation
-        imageMedium, labelMedium = self.image_augmentation(currImg, currGt)
+        if self.mode != "test_data":
+            imageMedium, labelMedium = self.image_augmentation(currImg, currGt)
 
         return imageMedium, labelMedium

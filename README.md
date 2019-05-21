@@ -1,5 +1,5 @@
 # PotsdamTools
-Tools for [Potsdam](<http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-potsdam.html>) dataset preprocessing.
+Tools for [Potsdam](<http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-potsdam.html>) and [Vaihingin](http://www2.isprs.org/commissions/comm3/wg4/2d-sem-label-vaihingen.html) dataset preprocessing.
 
 Dependency:
 

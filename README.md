@@ -13,7 +13,7 @@ Dependency:
 
 Use Dataloader to load an item of (image, dsm) pairs. This class is easy to use with Pytorch.
 
-Note that ALL DATA FILES (RGB images and dsm files) should be placed in a same directory.
+Note that **ALL DATA FILES** (RGB images and dsm files) should be placed in the same directory.
 
 ```python
 from Dataloader import Posloader

@@ -166,6 +166,14 @@ class Posloader(object):
         self.top_data = self.get_data(top_paths)
         self.dsm_data = self.get_data(dsm_paths)
 
+    def get_data_length(self):
+        if (self.top_data == []) and (self.dsm_data == []):
+            self.get_pair_data()
+        else:
+            pass
+
+        return len(self.top_data)
+
     def load_item(self, idx):
         if (self.top_data == []) and (self.dsm_data == []):
             self.get_pair_data()

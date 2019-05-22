@@ -130,9 +130,9 @@ class Posloader(object):
         x = np.linspace(0, xEnd, np.ceil(xEnd/np.float(self.block_width-self.block_overlap))+1, endpoint=True).astype('int')
         y = np.linspace(0, yEnd, np.ceil(yEnd/np.float(self.block_height-self.block_overlap))+1, endpoint=True).astype('int')
 
-        for currx in x:
-            for curry in y:
-                blocks.append((currx, curry))
+        for curry in y:
+            for currx in x:
+                blocks.append((curry, currx))
 
         return blocks
 

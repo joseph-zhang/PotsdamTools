@@ -11,9 +11,11 @@ Dependency:
 
 #### Dataloader
 
-Use Dataloader to load an item of (image, dsm) pairs. This class is easy to use with Pytorch.
+- Use Dataloader to load an item of (image, dsm) pairs. This class is easy to use with Pytorch
 
-Note that **ALL DATA FILES** (RGB images and dsm files) should be placed in the same directory.
+- Note that **ALL DATA FILES** (RGB images and dsm files) should be placed in the same directory
+- Data mode can be selected from "train_data", "test_data" and "all_data" items
+- The dataset is divided by .txt files, which can be modified in specific projects
 
 ```python
 from Dataloader import Posloader

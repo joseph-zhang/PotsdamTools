@@ -17,6 +17,7 @@ Note that **ALL DATA FILES** (RGB images and dsm files) should be placed in the 
 
 ```python
 from Dataloader import Posloader
+# from Dataloader import Vailoader
 #...
 
 class Mydataset(Dataset):
@@ -35,7 +36,7 @@ class Mydataset(Dataset):
         return image, dsm
 
     def __len__(self):
-        return len(self.posloader.top_data)
+        return self.posloader.get_data_length()
 ```
 
 #### GTchecker

@@ -116,7 +116,7 @@ class Vailoader(object):
         augmented = aug(image=currImg, mask=gt)
         imageMedium = augmented['image']
         labelMedium = augmented['mask']
-        return imageMedium,labelMedium
+        return imageMedium, labelMedium
 
     def get_blocks(self, img_height, img_width):
         blocks = []
@@ -214,5 +214,7 @@ class Vailoader(object):
         # data augmentation
         if self.mode != "test_data":
             imageMedium, labelMedium = self.image_augmentation(currImg, currGt)
+        else:
+            imageMedium, labelMedium = (currImg, currGt)
 
         return imageMedium, labelMedium

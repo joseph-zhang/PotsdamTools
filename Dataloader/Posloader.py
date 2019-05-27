@@ -174,6 +174,11 @@ class Posloader(object):
 
         return len(self.top_data)
 
+    def scale_dsm(self, np_dsm):
+        # note that the param dsm is a numpy array
+        min_val = np.min(np_dsm)
+        return (np_dsm - min_val)
+
     def load_item(self, idx):
         if (self.top_data == []) and (self.dsm_data == []):
             self.get_pair_data()
@@ -210,4 +215,4 @@ class Posloader(object):
         else:
             imageMedium, labelMedium = (currImg, currGt)
 
-        return imageMedium, labelMedium
+        return imageMedium, scale_dsm(labelMedium)

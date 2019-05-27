@@ -215,4 +215,4 @@ class Posloader(object):
         else:
             imageMedium, labelMedium = (currImg, currGt)
 
-        return imageMedium, scale_dsm(labelMedium)
+        return imageMedium, self.scale_dsm(labelMedium)

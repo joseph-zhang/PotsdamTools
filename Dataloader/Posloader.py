@@ -176,7 +176,7 @@ class Posloader(object):
 
     def scale_dsm(self, np_dsm):
         # note that the param dsm is a numpy array
-        min_val = np.min(np_dsm)
+        min_val = 12.05
         return (np_dsm - min_val)
 
     def load_item(self, idx):

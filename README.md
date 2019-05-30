@@ -46,7 +46,15 @@ class Mydataset(Dataset):
 Just a script to check DSM ground truth with jet colormap.
 
 ```bash
-python showGT.py --dataset_dir=<your_data_path> --data_name=<'pos' or 'vai'>
+python checkGT.py --dataset_dir=<your_data_path> --data_name=<'pos' or 'vai'> --check_mode=<'vis' or 'sta'>
 ```
 
 Note that the complete **namefile** has been included in /GTchecker.
+
+The check mode can be selected from Visual mode or Statistical mode, which correspond to 'vis' and 'sta' respectively.
+
+Here we show the result of statistical mode:
+
+![vai_info](./vai_info.png)
+
+![pos_info](./pos_info.png)

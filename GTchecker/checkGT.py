@@ -52,12 +52,26 @@ def save_gt(flist):
 
 
 def study_gt(flist):
-    glob_arr = np.array([])
+    # create temp data container
+    glob_arr = None
 
-    for fname in tqdm(flist):
-        fpath = os.path.join(args.dataset_dir, fname)
-        img_arr = read_img(fpath)
-        glob_arr = np.append(glob_arr, img_arr.flatten())
+    if args.data_name == 'vai':
+        glob_arr = np.array([])
+
+        for fname in tqdm(flist):
+            fpath = os.path.join(args.dataset_dir, fname)
+            img_arr = read_img(fpath).astype(np.float32)
+            glob_arr = np.append(glob_arr, img_arr.flatten())
+    elif args.data_name == 'pos':
+        flen = len(flist)
+        glob_arr = np.zeros([flen, 5000, 5000]).astype(np.float32)
+
+        for it, fname in enumerate(tqdm(flist)):
+            fpath = os.path.join(args.dataset_dir, fname)
+            glob_arr[it] = np.nan_to_num(read_img(fpath))
+        glob_arr = glob_arr.flatten()
+    else:
+        pass
 
     print("Getting data info ...")
     glob_min, glob_max, glob_mean = map(lambda arr: np.round(arr, decimals=2), [np.min(glob_arr), np.max(glob_arr), np.mean(glob_arr)])
@@ -67,7 +81,7 @@ def study_gt(flist):
     plt.grid(axis='y', alpha=0.85)
     plt.xlabel('Height range')
     plt.ylabel('Frequency')
-    plt.title("Histogram of {} $\\rightarrow$ $\mu:$ {}, min: {}, max: {}".format(args.data_name, glob_mean, glob_min, glob_max))
+    plt.title("Histogram of {} $\\rightarrow$ $\mu:$ {:.2f}, min: {:.2f}, max: {:.2f}".format(args.data_name, glob_mean, glob_min, glob_max))
     maxfreq = n.max()
     plt.ylim(top=np.ceil(maxfreq / 10) * 10 if maxfreq % 10 else maxfreq + 10)
     plt.savefig(os.path.join(args.output_dir, '{}_info.png'.format(args.data_name)))

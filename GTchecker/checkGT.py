@@ -8,7 +8,6 @@ import sys
 import tifffile
 import argparse
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
@@ -61,11 +60,10 @@ def study_gt(flist):
         glob_arr = np.append(glob_arr, img_arr.flatten())
 
     print("Getting data info ...")
-    pd_data = pd.Series(glob_arr)
-    glob_min, glob_max, glob_mean, glob_std = pd_data.agg(['min', 'max', 'mean', 'std']).round(decimals=2)
+    glob_min, glob_max, glob_mean = map(lambda arr: np.round(arr, decimals=2), [np.min(glob_arr), np.max(glob_arr), np.mean(glob_arr)])
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
-    n, bins, patches = plt.hist(x=pd_data, bins='auto', color='#0504aa', alpha=0.7, rwidth=0.85)
+    n, bins, patches = plt.hist(x=glob_arr, bins='auto', color='#0504aa', alpha=0.7, rwidth=0.85)
     plt.grid(axis='y', alpha=0.85)
     plt.xlabel('Height range')
     plt.ylabel('Frequency')

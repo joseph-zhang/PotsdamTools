@@ -1,3 +1,5 @@
+import os
+import cv2
 import time
 import argparse
 import tifffile
@@ -6,7 +8,7 @@ from open3d import read_point_cloud, draw_geometries
 
 
 parser = argparse.ArgumentParser(description='Convert DSM to Point Cloud')
-parser.add_argument('--rgb_path',      type=str,     required=True,             help='The path of input RGB TIFF file')
+parser.add_argument('--rgb_path',      type=str,     required=True,             help='The path of input RGB image file')
 parser.add_argument('--dsm_path',      type=str,     required=True,             help='The path of input DSM TIFF file')
 parser.add_argument('--out_path',      type=str,     default="./pcloud.ply",    help='The path of output ply file')
 parser.add_argument('--scale_factor',  type=float,   default=1.0,               help='the factor * input value')
@@ -23,11 +25,18 @@ class DSM2Cloud():
         self.dsm_file = dsm_file
         self.out_file = out_file
         self.scalingfactor = scalingfactor
-        self.rgb_image = tifffile.imread(rgb_file).astype(np.uint8)
+
+        rgb_suffix = (os.path.split(self.rgb_file)[-1]).split('.')[-1]
+        if rgb_suffix == 'tif':
+            self.rgb_image = tifffile.imread(rgb_file).astype(np.uint8)
+        else:
+            self.rgb_image = cv2.imread(rgb_file).astype(np.uint8)
+
         self.dsm_image = tifffile.imread(dsm_file).astype(np.float32)
-        self.img_shape = self.rgb_image.shape
+        self.img_shape = self.dsm_image.shape
         self.img_height = self.img_shape[0]
         self.img_width = self.img_shape[1]
+        self.rgb_image = cv2.resize(self.rgb_image[:,:,0:3], (self.img_height, self.img_width), interpolation=cv2.INTER_LINEAR)
 
     def gen_cloud(self):
         Z = self.dsm_image / self.scalingfactor

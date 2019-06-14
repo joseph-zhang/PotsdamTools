@@ -36,7 +36,7 @@ class DSM2Cloud():
         self.img_shape = self.dsm_image.shape
         self.img_height = self.img_shape[0]
         self.img_width = self.img_shape[1]
-        self.rgb_image = cv2.resize(self.rgb_image[:,:,0:3], (self.img_height, self.img_width), interpolation=cv2.INTER_LINEAR)
+        self.rgb_image = cv2.resize(self.rgb_image[:,:,0:3], (self.img_width, self.img_height), interpolation=cv2.INTER_LINEAR)
 
     def gen_cloud(self):
         Z = self.dsm_image / self.scalingfactor

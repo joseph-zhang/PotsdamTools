@@ -8,6 +8,8 @@ Dependency:
 - matplotlib
 - PIL
 - albumentations
+- open3d
+- opencv
 
 #### Dataloader
 
@@ -58,3 +60,11 @@ Here we show the result of statistical mode:
 ![vai_info](./vai_info.png)
 
 ![pos_info](./pos_info.png)
+
+#### Utils
+
+dsm2pcloud.py will be helpful to create ply point cloud files from the given (rgb, dsm) pairs.
+
+```bash
+python dsm2pcloud.py --rgb_path=<your_rgb_file> --dsm_path=<your_dsm_file> --out_path=<output_ply_name>
+```
